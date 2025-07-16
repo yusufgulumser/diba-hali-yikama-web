@@ -1,9 +1,100 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Services.module.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import slide1 from '../../assets/slide1.jpeg';
+import slide2 from '../../assets/slide2.jpeg';
+import slide3 from '../../assets/slide3.jpeg';
+import video1 from '../../assets/video1.mp4';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState({});
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const videoRef = useRef(null);
+
+  // Slider data
+  const slides = [
+    {
+      id: 1,
+      type: 'video',
+      src: video1,
+      title: 'Profesyonel Temizlik Sürecimiz',
+      subtitle: 'Modern teknoloji ile mükemmel sonuçlar'
+    },
+    {
+      id: 2,
+      type: 'image',
+      src: slide1,
+      title: 'Halı Temizleme Uzmanları',
+      subtitle: 'Her türlü halı için özel çözümler'
+    },
+    {
+      id: 3,
+      type: 'image',
+      src: slide2,
+      title: 'Koltuk & Mobilya Bakımı',
+      subtitle: 'Evinizin konforunu koruyoruz'
+    },
+    {
+      id: 4,
+      type: 'image',
+      src: slide3,
+      title: 'Perde & Tekstil Hizmetleri',
+      subtitle: 'Evinizdeki her detaya özen'
+    }
+  ];
+
+  // Video bittiğinde autoplay'i tekrar başlat
+  const handleVideoEnded = () => {
+    setIsVideoPlaying(false);
+    if (swiperInstance) {
+      swiperInstance.autoplay.start();
+      // Video bittikten sonra otomatik olarak sonraki slide'a geç
+      setTimeout(() => {
+        swiperInstance.slideNext();
+      }, 1000);
+    }
+  };
+
+  // Video yüklendiğinde otomatik başlat
+  const handleVideoLoaded = () => {
+    if (videoRef.current) {
+      videoRef.current.play().then(() => {
+        setIsVideoPlaying(true);
+        // Video oynarken autoplay'i durdur
+        if (swiperInstance) {
+          swiperInstance.autoplay.stop();
+        }
+      }).catch(() => {
+        // Autoplay engellenirse kullanıcı etkileşimi bekle
+        setIsVideoPlaying(false);
+      });
+    }
+  };
+
+  // Slide değiştiğinde video'yu durdur
+  const handleSlideChange = (swiper) => {
+    if (videoRef.current && !videoRef.current.paused) {
+      videoRef.current.pause();
+      setIsVideoPlaying(false);
+    }
+    
+    // Video slide'ından çıktığında autoplay'i başlat
+    if (swiper.activeIndex !== 0) {
+      swiper.autoplay.start();
+    } else {
+      // Video slide'ına geldiğinde video'yu başlat
+      setTimeout(() => {
+        handleVideoLoaded();
+      }, 500);
+    }
+  };
 
   // Animated Background Shapes Component
   const AnimatedShapes = () => (
@@ -264,6 +355,93 @@ const Services = () => {
           top: mousePosition.y - 10 
         }}
       />
+
+      {/* Hero Slider Section */}
+      <section className={styles.heroSlider}>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay, EffectFade]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={{
+            nextEl: `.${styles.nextButton}`,
+            prevEl: `.${styles.prevButton}`,
+          }}
+          pagination={{
+            el: `.${styles.sliderDots}`,
+            clickable: true,
+            bulletClass: styles.dot,
+            bulletActiveClass: styles.activeDot,
+          }}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          effect="fade"
+          fadeEffect={{
+            crossFade: true
+          }}
+          speed={1000}
+          loop={true}
+          onSwiper={setSwiperInstance}
+          onSlideChange={handleSlideChange}
+          className={styles.swiperContainer}
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={slide.id} className={styles.swiperSlide}>
+              <div className={styles.slide}>
+                {slide.type === 'video' ? (
+                  <div className={styles.videoContainer}>
+                    <video 
+                      ref={videoRef}
+                      src={slide.src}
+                      muted 
+                      playsInline
+                      className={styles.sliderVideo}
+                      onEnded={handleVideoEnded}
+                      onLoadedData={handleVideoLoaded}
+                    />
+                  </div>
+                ) : (
+                  <img 
+                    src={slide.src} 
+                    alt={slide.title}
+                    className={styles.sliderImage}
+                  />
+                )}
+                
+                <div className={styles.slideContent}>
+                  <div className={styles.slideTextContainer}>
+                    <h2 className={styles.slideTitle}>{slide.title}</h2>
+                    <p className={styles.slideSubtitle}>{slide.subtitle}</p>
+                    <div className={styles.slideActions}>
+                      <button className={styles.ctaButton}>
+                        <span>Hizmeti İncele</span>
+                        <i className="fas fa-arrow-right"></i>
+                      </button>
+                      <button className={styles.secondaryButton}>
+                        <i className="fas fa-phone"></i>
+                        <span>Hemen Ara</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+          
+          {/* Custom Navigation */}
+          <div className={styles.prevButton}>
+            <i className="fas fa-chevron-left"></i>
+          </div>
+          <div className={styles.nextButton}>
+            <i className="fas fa-chevron-right"></i>
+          </div>
+          
+          {/* Custom Pagination */}
+          <div className={styles.sliderDots}></div>
+        </Swiper>
+      </section>
 
       {/* Hero Section */}
       <section className={styles.heroSection} id="hero">

@@ -6,6 +6,226 @@
   overflow-x: hidden;
 }
 
+/* Hero Slider Styles */
+.heroSlider {
+  position: relative;
+  height: 80vh;
+  min-height: 700px;
+  overflow: hidden;
+  background: #000;
+}
+
+.swiperContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.swiperSlide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sliderVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+.slideContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  padding: 3rem 2rem 2rem;
+  z-index: 2;
+}
+
+.slideTextContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+.slideTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slideSubtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.slideActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Swiper Navigation Custom Styles */
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.prevButton {
+  left: 2rem;
+}
+
+.nextButton {
+  right: 2rem;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Swiper Pagination Custom Styles */
+.sliderDots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.dot.activeDot::after {
+  transform: scale(1);
+}
+
+.dot:hover {
+  border-color: white;
+}
+
 /* Background Effects */
 .backgroundShapes {
   position: fixed;
@@ -616,8 +836,70 @@
   background: linear-gradient(45deg, #1976D2, #2196F3);
 }
 
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .heroSlider {
+    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+  .heroSlider {
+    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+  }
+  
+  .sliderImage,
+  .sliderVideo {
+    object-fit: cover;
+  }
+  
+  .slideTitle {
+    font-size: 2.2rem;
+  }
+  
+  .slideSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .slideContent {
+    padding: 1.5rem 1rem 1rem;
+  }
+  
+  .slideActions {
+    display: none;
+  }
+  
+  .ctaButton,
+  .secondaryButton {
+    display: none;
+  }
+  
+  .prevButton,
+  .nextButton {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .prevButton {
+    left: 1rem;
+  }
+  
+  .nextButton {
+    right: 1rem;
+  }
+  
+  .slideActions {
+    display: none;
+  }
+  
+  .ctaButton,
+  .secondaryButton {
+    display: none;
+  }
+  
   .heroTitle {
     font-size: 2.5rem;
   }
@@ -655,7 +937,99 @@
   }
 }
 
+/* Extra Small Mobile Devices */
+@media (max-width: 360px) {
+  .heroSlider {
+    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+  }
+  
+  .slideContent {
+    padding: 0.8rem 0.5rem 0.5rem;
+  }
+  
+  .slideTitle {
+    font-size: 1.5rem;
+  }
+  
+  .slideSubtitle {
+    font-size: 0.9rem;
+  }
+  
+  .prevButton,
+  .nextButton {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .heroSlider {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  
+  .slideContent {
+    padding: 0.5rem 1rem 0.5rem;
+  }
+  
+  .slideTitle {
+    font-size: 1.4rem;
+  }
+  
+  .slideSubtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .heroSlider {
+    height: calc(100vh - 65px);
+    min-height: calc(100vh - 65px);
+  }
+  
+  .sliderImage,
+  .sliderVideo {
+    object-fit: cover;
+  }
+  
+  .slideTitle {
+    font-size: 1.8rem;
+  }
+  
+  .slideSubtitle {
+    font-size: 1rem;
+  }
+  
+  .slideContent {
+    padding: 1rem 0.8rem 0.8rem;
+  }
+  
+  .slideActions {
+    display: none;
+  }
+  
+  .ctaButton,
+  .secondaryButton {
+    display: none;
+  }
+  
+  .prevButton,
+  .nextButton {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .prevButton {
+    left: 0.5rem;
+  }
+  
+  .nextButton {
+    right: 0.5rem;
+  }
+  
   .heroTitle {
     font-size: 2rem;
   }

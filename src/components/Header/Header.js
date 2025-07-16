@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
+import logo1 from '../../assets/logoPng.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,8 +79,11 @@ const Header = () => {
         <nav className={styles.nav}>
           {/* Logo */}
           <Link to="/" className={styles.logo} onClick={closeMobileMenu}>
-            <span className={styles.logoMain}>Diba</span>
-            <span className={styles.logoSub}>Halı Yıkama</span>
+            <img src={logo1} alt="Diba Halı Yıkama" className={styles.logoImage} />
+            <div className={styles.logoText}>
+              <span className={styles.logoMain}>Diba</span>
+              <span className={styles.logoSub}>Halı Yıkama</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

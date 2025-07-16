@@ -238,7 +238,7 @@
 
 .areasGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -546,6 +546,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero {
+    padding: 6rem 0 4rem;
+  }
+  
   .titleMain {
     font-size: 2.5rem;
   }
@@ -565,10 +569,11 @@
   .areasGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-top: 2rem;
   }
   
   .areaCard {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
   }
   
   .heroActions,
@@ -593,7 +598,7 @@
   }
   
   .areaStats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
   
@@ -608,12 +613,21 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding: 6rem 0 4rem;
+    padding: 5rem 0 3rem;
   }
   
   .areasSection,
   .ctaSection {
-    padding: 4rem 0;
+    padding: 3rem 0;
+  }
+  
+  .areasGrid {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .areaCard {
+    margin: 0;
   }
   
   .cardHeader,
@@ -635,5 +649,17 @@
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
+  }
+  
+  .titleMain {
+    font-size: 2rem;
+  }
+  
+  .titleSub {
+    font-size: 1.2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
   }
 }

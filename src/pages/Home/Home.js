@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
+import logo2 from '../../assets/logo2.jpeg';
 
 const Home = () => {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -164,7 +165,7 @@ const Home = () => {
             <div className={styles.heroRight}>
               <div className={styles.heroVisual}>
                 <div className={styles.mainImage}>
-                  <img src={`${process.env.PUBLIC_URL}/images/carpet-cleaning.jpeg`} alt="Profesyonel Halı Temizlik" />
+                  <img src={logo2} alt="Diba Halı Yıkama - Profesyonel Temizlik Hizmeti" />
                   <div className={styles.imageOverlay}></div>
                 </div>
                 <div className={styles.floatingCards}>
