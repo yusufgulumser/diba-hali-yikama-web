@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/diba-hali-yikama-web/static/css/main.81194eb9.css",
+    "main.js": "/diba-hali-yikama-web/static/js/main.ab655589.js",
+    "static/js/453.8e204e21.chunk.js": "/diba-hali-yikama-web/static/js/453.8e204e21.chunk.js",
+    "index.html": "/diba-hali-yikama-web/index.html",
+    "main.81194eb9.css.map": "/diba-hali-yikama-web/static/css/main.81194eb9.css.map",
+    "main.ab655589.js.map": "/diba-hali-yikama-web/static/js/main.ab655589.js.map",
+    "453.8e204e21.chunk.js.map": "/diba-hali-yikama-web/static/js/453.8e204e21.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81194eb9.css",
+    "static/js/main.ab655589.js"
+  ]
+}
