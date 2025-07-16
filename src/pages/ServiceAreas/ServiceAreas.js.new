@@ -1,0 +1,650 @@
+import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './ServiceAreas.module.css';
+
+const ServiceAreas = () => {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [activeArea, setActiveArea] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [expandedArea, setExpandedArea] = useState(null);
+  const [mapView, setMapView] = useState('grid'); // 'grid' or 'map'
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const mapContainerRef = useRef(null);
+  const cursorRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisibleSections(prev => new Set([...prev, entry.target.id]));
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Custom cursor tracking
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  // İstanbul'daki hizmet bölgeleri - Zenginleştirilmiş data
+  const serviceAreas = [
+    {
+      id: 'esenler',
+      district: 'Esenler',
+      isMainCenter: true,
+      icon: '🏠',
+      emoji: '🏢',
+      color: '#667eea',
+      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      position: { x: 50, y: 40 },
+      coverageTime: '30 dk',
+      priority: 'yüksek',
+      description: 'Ana merkez konumumuz. En hızlı hizmet bölgesi.',
+      features: ['7/24 Hizmet', 'Acil Servis', 'Premium Temizlik'],
+      neighborhoods: [
+        'Atışalanı', 'Çiftehavuzlar', 'Fevzi Çakmak', 'Havaalanı', 
+        'Kemer', 'Menderes', 'Namık Kemal', 'Nine Hatun', 
+        'Oruçreis', 'Tuna', 'Turgutreis', 'Yavuz Selim'
+      ],
+      stats: {
+        customers: '2500+',
+        deliveryTime: 'Aynı Gün',
+        rating: 4.9,
+        satisfaction: 98,
+        monthlyOrders: 450
+      },
+      testimonial: {
+        text: "Hızlı ve kaliteli hizmet!",
+        author: "Mehmet K.",
+        rating: 5
+      }
+    },
+    {
+      id: 'gungoren',
+      district: 'Güngören',
+      icon: '🏢',
+      emoji: '🌆',
+      color: '#f093fb',
+      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      position: { x: 35, y: 55 },
+      coverageTime: '45 dk',
+      priority: 'yüksek',
+      description: 'Yoğun ticari bölge, özel paketler mevcut.',
+      features: ['Toplu İndirim', 'Kurumsal Hizmet', 'Ekspres Teslimat'],
+      neighborhoods: [
+        'Abdurrahman Nafiz Gürman', 'Akçaburgaz', 'Geçit',
+        'Güneştepe', 'Haznedar', 'Mareşal Fevzi Çakmak',
+        'Mehmet Nesih Özmen', 'Merkez', 'Tozkoparan'
+      ],
+      stats: {
+        customers: '1800+',
+        deliveryTime: '48 Saat',
+        rating: 4.8,
+        satisfaction: 96,
+        monthlyOrders: 320
+      },
+      testimonial: {
+        text: "Ofisimizin halıları mükemmel temizlendi.",
+        author: "Ayşe D.",
+        rating: 5
+      }
+    },
+    {
+      id: 'bagcilar',
+      district: 'Bağcılar',
+      icon: '🏘️',
+      emoji: '🏡',
+      color: '#4facfe',
+      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      position: { x: 70, y: 30 },
+      coverageTime: '1 saat',
+      priority: 'orta',
+      description: 'Büyük yerleşim bölgesi, toplu indirimler.',
+      features: ['Mahalle İndirimi', 'Grup Siparişi', 'Esnek Ödeme'],
+      neighborhoods: [
+        'Bağlar', 'Demirkapı', 'Evren', 'Fatih', 'Göztepe',
+        'Güneşli', 'İnönü', 'Kemalpaşa', 'Kirazlı', 'Mahmutbey',
+        'Merkez', 'Sakızağacı', 'Sancaktepe', 'Yıldıztepe', 'Yüzyıl'
+      ],
+      stats: {
+        customers: '3200+',
+        deliveryTime: '48 Saat',
+        rating: 4.9,
+        satisfaction: 97,
+        monthlyOrders: 580
+      },
+      testimonial: {
+        text: "Büyük halımı çok güzel temizlediler.",
+        author: "Fatma Y.",
+        rating: 5
+      }
+    },
+    {
+      id: 'bayramapasa',
+      district: 'Bayrampaşa',
+      icon: '🏛️',
+      emoji: '🏭',
+      color: '#10b981',
+      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+      position: { x: 30, y: 35 },
+      coverageTime: '45 dk',
+      priority: 'yüksek',
+      description: 'Merkezi konum, hızlı erişim imkanı.',
+      features: ['Hızlı Teslimat', 'Eko Temizlik', 'Garantili Hizmet'],
+      neighborhoods: [
+        'Altıntepsi', 'Cevatpaşa', 'Kartaltepe', 'Muratpaşa',
+        'Ortamahalle', 'Ruhupaşa', 'Terazidere', 'Vatan', 'Yıldırım'
+      ],
+      stats: {
+        customers: '1500+',
+        deliveryTime: '24 Saat',
+        rating: 4.7,
+        satisfaction: 94,
+        monthlyOrders: 280
+      },
+      testimonial: {
+        text: "Zamanında geldi, işi hakkıyla yaptı.",
+        author: "Ali B.",
+        rating: 4
+      }
+    },
+    {
+      id: 'zeytinburnu',
+      district: 'Zeytinburnu',
+      icon: '🌊',
+      emoji: '🌊',
+      color: '#f59e0b',
+      gradient: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+      position: { x: 20, y: 60 },
+      coverageTime: '1 saat',
+      priority: 'orta',
+      description: 'Sahil bölgesi, özel temizlik çözümleri.',
+      features: ['Deniz Havası Etkisi', 'Özel Bakım', 'Koruyucu İşlem'],
+      neighborhoods: [
+        'Beştelsiz', 'Çırpıcı', 'Gökalp', 'Merkezefendi',
+        'Nuripaşa', 'Sümer', 'Telsiz', 'Veliefendi', 'Yenidoğan'
+      ],
+      stats: {
+        customers: '1200+',
+        deliveryTime: '48 Saat',
+        rating: 4.8,
+        satisfaction: 95,
+        monthlyOrders: 210
+      },
+      testimonial: {
+        text: "Denize yakın olmamıza rağmen harika temizlediler.",
+        author: "Zeynep K.",
+        rating: 5
+      }
+    },
+    {
+      id: 'bahcelievler',
+      district: 'Bahçelievler',
+      icon: '🌸',
+      emoji: '🌺',
+      color: '#8b5cf6',
+      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+      position: { x: 60, y: 70 },
+      coverageTime: '1 saat',
+      priority: 'premium',
+      description: 'Premium yerleşim, lüks hizmet paketleri.',
+      features: ['VIP Hizmet', 'Lüks Paketler', 'Özel Araç'],
+      neighborhoods: [
+        'Adnan Kahveci', 'Bahçelievler', 'Cumhuriyet', 'Ertuğrulgazi',
+        'Fevzi Çakmak', 'Hürriyet', 'Kocasinan', 'Sirinevler',
+        'Soğanlı', 'Şirinevler', 'Yenibosna', 'Zafer'
+      ],
+      stats: {
+        customers: '2100+',
+        deliveryTime: '48 Saat',
+        rating: 4.9,
+        satisfaction: 99,
+        monthlyOrders: 380
+      },
+      testimonial: {
+        text: "Premium hizmet gerçekten fark yaratıyor.",
+        author: "Murat A.",
+        rating: 5
+      }
+    }
+  ];
+
+  const filterOptions = [
+    { id: 'all', label: 'Tüm Bölgeler', icon: '🗺️' },
+    { id: 'yüksek', label: 'Yüksek Öncelik', icon: '⚡' },
+    { id: 'premium', label: 'Premium', icon: '💎' },
+    { id: 'orta', label: 'Standart', icon: '📍' }
+  ];
+
+  const filteredAreas = selectedFilter === 'all' 
+    ? serviceAreas 
+    : serviceAreas.filter(area => area.priority === selectedFilter);
+
+  const isVisible = (sectionId) => visibleSections.has(sectionId);
+
+  const handleAreaClick = (areaId) => {
+    setExpandedArea(expandedArea === areaId ? null : areaId);
+  };
+
+  const totalStats = {
+    totalCustomers: serviceAreas.reduce((sum, area) => sum + parseInt(area.stats.customers.replace('+', '')), 0),
+    avgRating: (serviceAreas.reduce((sum, area) => sum + area.stats.rating, 0) / serviceAreas.length).toFixed(1),
+    totalOrders: serviceAreas.reduce((sum, area) => sum + area.stats.monthlyOrders, 0)
+  };
+
+  return (
+    <div className={styles.serviceAreas}>
+      {/* Custom Cursor */}
+      <div ref={cursorRef} className={styles.customCursor}></div>
+
+      {/* Hero Section - Futuristic */}
+      <section className={styles.hero} id="hero" data-animate>
+        <div className={styles.heroBackground}>
+          <div className={styles.heroShapes}>
+            <div className={styles.shape1}></div>
+            <div className={styles.shape2}></div>
+            <div className={styles.shape3}></div>
+            <div className={styles.shape4}></div>
+            <div className={styles.particleSystem}>
+              {[...Array(50)].map((_, i) => (
+                <div key={i} className={styles.particle} style={{
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  animationDuration: `${3 + Math.random() * 4}s`
+                }}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <div className="container">
+          <div className={`${styles.heroContent} ${isVisible('hero') ? 'fade-in visible' : 'fade-in'}`}>
+            <div className={styles.heroLabel}>
+              <span className={styles.labelIcon}>🚀</span>
+              <span>Gelişmiş Hizmet Ağı</span>
+              <span className={styles.labelBadge}>v2.0</span>
+            </div>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.titleMain}>İstanbul'un</span>
+              <span className={styles.titleGradient}>Dijital Halı Yıkama</span>
+              <span className={styles.titleSub}>Ekosistemi</span>
+            </h1>
+            <p className={styles.heroDescription}>
+              Yapay zeka destekli rota optimizasyonu, gerçek zamanlı takip sistemi ve 
+              IoT sensörlü temizlik teknolojisi ile halı yıkamada yeni çağ.
+            </p>
+            
+            <div className={styles.heroMetrics}>
+              <div className={styles.metric}>
+                <div className={styles.metricIcon}>📊</div>
+                <div className={styles.metricValue}>{totalStats.totalCustomers}+</div>
+                <div className={styles.metricLabel}>Aktif Müşteri</div>
+              </div>
+              <div className={styles.metric}>
+                <div className={styles.metricIcon}>⚡</div>
+                <div className={styles.metricValue}>{totalStats.avgRating}</div>
+                <div className={styles.metricLabel}>Ortalama Puan</div>
+              </div>
+              <div className={styles.metric}>
+                <div className={styles.metricIcon}>🎯</div>
+                <div className={styles.metricValue}>{totalStats.totalOrders}</div>
+                <div className={styles.metricLabel}>Aylık Sipariş</div>
+              </div>
+            </div>
+            
+            <div className={styles.heroActions}>
+              <button className={styles.primaryAction}>
+                <span className={styles.actionIcon}>🎯</span>
+                <span>Akıllı Bölge Seçici</span>
+                <div className={styles.actionGlow}></div>
+              </button>
+              <button className={styles.secondaryAction}>
+                <span className={styles.actionIcon}>📱</span>
+                <span>AR Harita Görünümü</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Control Panel */}
+      <section className={styles.controlPanel} id="controls" data-animate>
+        <div className="container">
+          <div className={`${styles.panelContent} ${isVisible('controls') ? 'slide-up visible' : 'slide-up'}`}>
+            <div className={styles.viewToggle}>
+              <button 
+                className={`${styles.toggleBtn} ${mapView === 'grid' ? styles.active : ''}`}
+                onClick={() => setMapView('grid')}
+              >
+                <i className="fas fa-th-large"></i>
+                <span>Grid Görünüm</span>
+              </button>
+              <button 
+                className={`${styles.toggleBtn} ${mapView === 'map' ? styles.active : ''}`}
+                onClick={() => setMapView('map')}
+              >
+                <i className="fas fa-map"></i>
+                <span>Harita Görünümü</span>
+              </button>
+            </div>
+            
+            <div className={styles.filterPanel}>
+              {filterOptions.map(filter => (
+                <button
+                  key={filter.id}
+                  className={`${styles.filterBtn} ${selectedFilter === filter.id ? styles.active : ''}`}
+                  onClick={() => setSelectedFilter(filter.id)}
+                >
+                  <span className={styles.filterIcon}>{filter.icon}</span>
+                  <span>{filter.label}</span>
+                  <span className={styles.filterCount}>
+                    {filter.id === 'all' ? serviceAreas.length : serviceAreas.filter(a => a.priority === filter.id).length}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Map/Grid View */}
+      <section className={styles.areasSection} id="areas" data-animate>
+        <div className="container">
+          {mapView === 'map' ? (
+            // Harita Görünümü
+            <div className={`${styles.mapView} ${isVisible('areas') ? 'fade-in visible' : 'fade-in'}`}>
+              <div className={styles.mapContainer} ref={mapContainerRef}>
+                <div className={styles.mapBackground}>
+                  <div className={styles.mapGrid}></div>
+                  <div className={styles.mapOverlay}></div>
+                </div>
+                
+                {filteredAreas.map((area, index) => (
+                  <div
+                    key={area.id}
+                    className={`${styles.mapMarker} ${activeArea === area.id ? styles.active : ''} ${expandedArea === area.id ? styles.expanded : ''}`}
+                    style={{
+                      left: `${area.position.x}%`,
+                      top: `${area.position.y}%`,
+                      animationDelay: `${index * 0.2}s`
+                    }}
+                    onMouseEnter={() => setActiveArea(area.id)}
+                    onMouseLeave={() => setActiveArea(null)}
+                    onClick={() => handleAreaClick(area.id)}
+                  >
+                    <div className={styles.markerPulse} style={{ background: area.color }}></div>
+                    <div className={styles.markerIcon} style={{ background: area.gradient }}>
+                      <span>{area.emoji}</span>
+                    </div>
+                    
+                    {(activeArea === area.id || expandedArea === area.id) && (
+                      <div className={styles.markerTooltip}>
+                        <div className={styles.tooltipHeader}>
+                          <h4>{area.district}</h4>
+                          <span className={styles.tooltipRating}>
+                            ⭐ {area.stats.rating}
+                          </span>
+                        </div>
+                        <div className={styles.tooltipStats}>
+                          <div className={styles.tooltipStat}>
+                            <span>👥</span>
+                            <span>{area.stats.customers}</span>
+                          </div>
+                          <div className={styles.tooltipStat}>
+                            <span>⏱️</span>
+                            <span>{area.coverageTime}</span>
+                          </div>
+                          <div className={styles.tooltipStat}>
+                            <span>📦</span>
+                            <span>{area.stats.monthlyOrders}/ay</span>
+                          </div>
+                        </div>
+                        
+                        {expandedArea === area.id && (
+                          <div className={styles.expandedInfo}>
+                            <div className={styles.features}>
+                              {area.features.map((feature, idx) => (
+                                <span key={idx} className={styles.featureTag}>
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                            <div className={styles.testimonial}>
+                              <p>"{area.testimonial.text}"</p>
+                              <span>- {area.testimonial.author}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            // Grid Görünümü - 3D Card System
+            <div className={`${styles.gridView} ${isVisible('areas') ? 'fade-in visible' : 'fade-in'}`}>
+              <div className={styles.areasGrid}>
+                {filteredAreas.map((area, index) => (
+                  <div
+                    key={area.id}
+                    className={`${styles.areaCard} ${area.isMainCenter ? styles.mainCenter : ''} ${activeArea === area.id ? styles.active : ''} ${expandedArea === area.id ? styles.expanded : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 0.1}s`,
+                      '--card-color': area.color 
+                    }}
+                    onMouseEnter={() => setActiveArea(area.id)}
+                    onMouseLeave={() => setActiveArea(null)}
+                    onClick={() => handleAreaClick(area.id)}
+                  >
+                    <div className={styles.cardGlow} style={{ background: area.gradient }}></div>
+                    
+                    <div className={styles.cardHeader}>
+                      <div className={styles.headerBackground} style={{ background: area.gradient }}>
+                        <div className={styles.headerPattern}></div>
+                      </div>
+                      
+                      <div className={styles.areaInfo}>
+                        <div className={styles.areaIcon}>
+                          <span className={styles.iconMain}>{area.emoji}</span>
+                          <div className={styles.iconGlow}></div>
+                        </div>
+                        <div className={styles.areaDetails}>
+                          <h3 className={styles.areaName}>
+                            <span>{area.district}</span>
+                            {area.isMainCenter && (
+                              <span className={styles.crownIcon}>👑</span>
+                            )}
+                          </h3>
+                          <p className={styles.areaDescription}>{area.description}</p>
+                          <div className={styles.priorityBadge} data-priority={area.priority}>
+                            {area.priority === 'premium' && '💎 Premium'}
+                            {area.priority === 'yüksek' && '⚡ Yüksek Öncelik'}
+                            {area.priority === 'orta' && '📍 Standart'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className={styles.cardBody}>
+                      <div className={styles.metricsGrid}>
+                        <div className={styles.metricBox}>
+                          <div className={styles.metricIcon}>👥</div>
+                          <div className={styles.metricData}>
+                            <span className={styles.metricValue}>{area.stats.customers}</span>
+                            <span className={styles.metricLabel}>Müşteri</span>
+                          </div>
+                        </div>
+                        <div className={styles.metricBox}>
+                          <div className={styles.metricIcon}>⏱️</div>
+                          <div className={styles.metricData}>
+                            <span className={styles.metricValue}>{area.coverageTime}</span>
+                            <span className={styles.metricLabel}>Ulaşım</span>
+                          </div>
+                        </div>
+                        <div className={styles.metricBox}>
+                          <div className={styles.metricIcon}>⭐</div>
+                          <div className={styles.metricData}>
+                            <span className={styles.metricValue}>{area.stats.rating}</span>
+                            <span className={styles.metricLabel}>Puan</span>
+                          </div>
+                        </div>
+                        <div className={styles.metricBox}>
+                          <div className={styles.metricIcon}>📊</div>
+                          <div className={styles.metricData}>
+                            <span className={styles.metricValue}>{area.stats.satisfaction}%</span>
+                            <span className={styles.metricLabel}>Memnuniyet</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className={styles.featuresContainer}>
+                        <h4 className={styles.featuresTitle}>
+                          <span>🎯 Özel Özellikler</span>
+                        </h4>
+                        <div className={styles.featuresList}>
+                          {area.features.map((feature, idx) => (
+                            <span key={idx} className={styles.featureChip}>
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {expandedArea === area.id && (
+                        <div className={styles.expandedContent}>
+                          <div className={styles.neighborhoodsSection}>
+                            <h4 className={styles.neighborhoodsTitle}>
+                              <span>📍 Hizmet Verilen Mahalleler</span>
+                              <span className={styles.neighborhoodCount}>{area.neighborhoods.length}</span>
+                            </h4>
+                            <div className={styles.neighborhoodsList}>
+                              {area.neighborhoods.map((neighborhood, idx) => (
+                                <span key={idx} className={styles.neighborhood}>
+                                  {neighborhood}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className={styles.testimonialSection}>
+                            <div className={styles.testimonialCard}>
+                              <div className={styles.testimonialStars}>
+                                {[...Array(area.testimonial.rating)].map((_, i) => (
+                                  <span key={i}>⭐</span>
+                                ))}
+                              </div>
+                              <p className={styles.testimonialText}>"{area.testimonial.text}"</p>
+                              <span className={styles.testimonialAuthor}>- {area.testimonial.author}</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className={styles.cardFooter}>
+                      <div className={styles.deliveryInfo}>
+                        <div className={styles.deliveryIcon}>
+                          <i className="fas fa-rocket"></i>
+                        </div>
+                        <div className={styles.deliveryDetails}>
+                          <span className={styles.deliveryTitle}>Teslimat</span>
+                          <span className={styles.deliveryTime}>{area.stats.deliveryTime}</span>
+                        </div>
+                      </div>
+                      
+                      <div className={styles.cardActions}>
+                        <button className={styles.expandBtn}>
+                          <i className={`fas ${expandedArea === area.id ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+                        </button>
+                        <Link to="/contact" className={styles.orderButton}>
+                          <span>Sipariş Ver</span>
+                          <i className="fas fa-arrow-right"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Advanced CTA Section */}
+      <section className={styles.ctaSection} id="cta" data-animate>
+        <div className={styles.ctaBackground}>
+          <div className={styles.ctaShapes}>
+            <div className={styles.ctaShape1}></div>
+            <div className={styles.ctaShape2}></div>
+          </div>
+        </div>
+        
+        <div className="container">
+          <div className={`${styles.ctaContent} ${isVisible('cta') ? 'fade-in visible' : 'fade-in'}`}>
+            <div className={styles.ctaText}>
+              <div className={styles.ctaLabel}>
+                <span>🚀</span>
+                <span>Gelecek Burada</span>
+              </div>
+              <h2>Bölgeniz Henüz Dijital Ağımızda Değil mi?</h2>
+              <p>
+                AI destekli genişleme planımız ile yeni bölgeleri sürekli ekliyoruz. 
+                Siz de gelecek nesil halı yıkama deneyiminin parçası olun.
+              </p>
+            </div>
+            
+            <div className={styles.ctaActions}>
+              <Link to="/contact" className={styles.ctaPrimary}>
+                <span className={styles.actionGlow}></span>
+                <span className={styles.actionIcon}>🎯</span>
+                <span>Genişleme Talebinde Bulun</span>
+                <i className="fas fa-rocket"></i>
+              </Link>
+              <a href="https://wa.me/905001234567" className={styles.ctaSecondary}>
+                <span className={styles.actionIcon}>💬</span>
+                <span>Anında Destek</span>
+                <i className="fab fa-whatsapp"></i>
+              </a>
+            </div>
+            
+            <div className={styles.ctaStats}>
+              <div className={styles.ctaStat}>
+                <span className={styles.statIcon}>📈</span>
+                <span className={styles.statValue}>%25</span>
+                <span className={styles.statLabel}>Aylık Büyüme</span>
+              </div>
+              <div className={styles.ctaStat}>
+                <span className={styles.statIcon}>🎯</span>
+                <span className={styles.statValue}>72 Saat</span>
+                <span className={styles.statLabel}>Ortalama Aktivasyon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default ServiceAreas;

@@ -1,0 +1,639 @@
+/* Modern Service Areas Page Styles */
+.serviceAreas {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 8rem 0 6rem;
+  background: linear-gradient(135deg, #1a1a3e 0%, #667eea 100%);
+  color: white;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heroShapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape1 {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape2 {
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 300px;
+  height: 300px;
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.shape3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: rgba(240, 171, 252, 0.05);
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroLabel {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.heroTitle {
+  margin-bottom: 2rem;
+}
+
+.titleMain {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.titleSub {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroDescription {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1f2937;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+}
+
+.primaryAction:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(251, 191, 36, 0.4);
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.secondaryAction:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+/* Areas Section */
+.areasSection {
+  padding: 6rem 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionLabel {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+  color: #667eea;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #1f2937 0%, #667eea 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sectionDescription {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.areasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.areaCard {
+  background: white;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.areaCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.areaCard.mainCenter {
+  position: relative;
+  border: 2px solid #fbbf24;
+}
+
+.areaCard.mainCenter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(245, 158, 11, 0.05));
+  pointer-events: none;
+}
+
+.cardHeader {
+  padding: 2rem;
+  color: white;
+  position: relative;
+}
+
+.areaInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.areaIcon {
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.areaDetails h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.areaDescription {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.mainBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.cardBody {
+  padding: 2rem;
+}
+
+.areaStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statBox {
+  text-align: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.statValue {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.statDesc {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.neighborhoodsContainer {
+  margin-bottom: 1.5rem;
+}
+
+.neighborhoodsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.neighborhoodCount {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.neighborhoodsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.neighborhood {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.neighborhood:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+.moreNeighborhoods {
+  background: #e5e7eb;
+  color: #6b7280;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.deliveryInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deliveryIcon {
+  background: #667eea;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
+.deliveryDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.deliveryTitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.deliveryTime {
+  font-size: 1rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.orderButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(103, 126, 234, 0.3);
+}
+
+.orderButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(103, 126, 234, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaText h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.ctaText p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  color: #667eea;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+  color: #667eea;
+  text-decoration: none;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .titleMain {
+    font-size: 2.5rem;
+  }
+  
+  .titleSub {
+    font-size: 1.4rem;
+  }
+  
+  .heroStats {
+    gap: 2rem;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+  
+  .areasGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .areaCard {
+    margin: 0 1rem;
+  }
+  
+  .heroActions,
+  .ctaActions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primaryAction,
+  .secondaryAction,
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .cardFooter {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .areaStats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaText h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 6rem 0 4rem;
+  }
+  
+  .areasSection,
+  .ctaSection {
+    padding: 4rem 0;
+  }
+  
+  .cardHeader,
+  .cardBody {
+    padding: 1.5rem;
+  }
+  
+  .areaInfo {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .areaIcon {
+    align-self: center;
+  }
+  
+  .neighborhoodsTitle {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
