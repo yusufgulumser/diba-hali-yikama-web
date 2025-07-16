@@ -4,7 +4,6 @@ import styles from './Home.module.css';
 
 const Home = () => {
   const [visibleSections, setVisibleSections] = useState(new Set());
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const observerOptions = {

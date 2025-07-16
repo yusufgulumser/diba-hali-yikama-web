@@ -56,44 +56,6 @@ const Footer = () => {
     };
   }, []);
 
-  const socialLinks = [
-    { 
-      name: 'WhatsApp', 
-      icon: <WhatsAppIcon />, 
-      url: 'https://wa.me/905301839656?text=Merhaba, halı yıkama hizmeti hakkında bilgi almak istiyorum.', 
-      color: '#25D366',
-      followers: '1.2K'
-    },
-    { 
-      name: 'Instagram', 
-      icon: <InstagramIcon />, 
-      url: 'https://instagram.com/diba_hali_yikama', 
-      color: '#E4405F',
-      followers: '3.4K'
-    },
-    { 
-      name: 'Facebook', 
-      icon: <FacebookIcon />, 
-      url: 'https://facebook.com/dibahaliyikama', 
-      color: '#1877F2',
-      followers: '2.1K'
-    },
-    { 
-      name: 'Twitter', 
-      icon: <TwitterIcon />, 
-      url: 'https://twitter.com/dibahaliyikama', 
-      color: '#1DA1F2',
-      followers: '856'
-    }
-  ];
-
-  const services = [
-    { name: 'Halı Temizleme', icon: '🧽', price: '₺50', duration: '2-3 gün' },
-    { name: 'Koltuk Temizleme', icon: '🛋️', price: '₺80', duration: '1-2 gün' },
-    { name: 'Perde Temizleme', icon: '🪟', price: '₺30', duration: '1 gün' },
-    { name: 'Yatak Temizleme', icon: '🛏️', price: '₺100', duration: '2-3 gün' }
-  ];
-
   const areas = ['Esenler', 'Güngören', 'Bağcılar', 'Bayrampaşa', 'Zeytinburnu', 'Bahçelievler'];
 
   return (
