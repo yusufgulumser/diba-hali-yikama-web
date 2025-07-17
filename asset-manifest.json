@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/diba-hali-yikama-web/static/css/main.0549cc40.css",
-    "main.js": "/diba-hali-yikama-web/static/js/main.3119ab74.js",
-    "static/js/453.8e204e21.chunk.js": "/diba-hali-yikama-web/static/js/453.8e204e21.chunk.js",
-    "static/media/video1.mp4": "/diba-hali-yikama-web/static/media/video1.74c972af9e97ec9eeed9.mp4",
-    "static/media/logoPng.png": "/diba-hali-yikama-web/static/media/logoPng.eefec2428eec11da1f8b.png",
-    "static/media/logo2.jpeg": "/diba-hali-yikama-web/static/media/logo2.a7c4229bcfb2b46131f4.jpeg",
-    "static/media/slide3.jpeg": "/diba-hali-yikama-web/static/media/slide3.4797e44a486383cd3364.jpeg",
-    "static/media/slide2.jpeg": "/diba-hali-yikama-web/static/media/slide2.41e91f72000cba4a98fc.jpeg",
-    "static/media/slide1.jpeg": "/diba-hali-yikama-web/static/media/slide1.9dfc1b8d96541abd7462.jpeg",
-    "index.html": "/diba-hali-yikama-web/index.html",
-    "main.0549cc40.css.map": "/diba-hali-yikama-web/static/css/main.0549cc40.css.map",
-    "main.3119ab74.js.map": "/diba-hali-yikama-web/static/js/main.3119ab74.js.map",
-    "453.8e204e21.chunk.js.map": "/diba-hali-yikama-web/static/js/453.8e204e21.chunk.js.map"
+    "main.css": "./static/css/main.0549cc40.css",
+    "main.js": "./static/js/main.ba487539.js",
+    "static/js/453.8e204e21.chunk.js": "./static/js/453.8e204e21.chunk.js",
+    "static/media/video1.mp4": "./static/media/video1.74c972af9e97ec9eeed9.mp4",
+    "static/media/logoPng.png": "./static/media/logoPng.eefec2428eec11da1f8b.png",
+    "static/media/logo2.jpeg": "./static/media/logo2.a7c4229bcfb2b46131f4.jpeg",
+    "static/media/slide3.jpeg": "./static/media/slide3.4797e44a486383cd3364.jpeg",
+    "static/media/slide2.jpeg": "./static/media/slide2.41e91f72000cba4a98fc.jpeg",
+    "static/media/slide1.jpeg": "./static/media/slide1.9dfc1b8d96541abd7462.jpeg",
+    "index.html": "./index.html",
+    "main.0549cc40.css.map": "./static/css/main.0549cc40.css.map",
+    "main.ba487539.js.map": "./static/js/main.ba487539.js.map",
+    "453.8e204e21.chunk.js.map": "./static/js/453.8e204e21.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0549cc40.css",
-    "static/js/main.3119ab74.js"
+    "static/js/main.ba487539.js"
   ]
 }
