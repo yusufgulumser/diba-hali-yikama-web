@@ -111,7 +111,7 @@ const Contact = () => {
             💬 Bizimle İletişime Geçin
           </h2>
           <p className={styles.sectionDescription}>
-            Halı, kilim ve ev tekstillerinizin temizliği için hemen iletişime geçin! 7/24 hizmetinizdeyiz.
+            Halı, kilim ve kumaş ürünlerinizin temizliği için hemen iletişime geçin! 7/24 hizmetinizdeyiz.
           </p>
           <div className={styles.socialGrid}>
             <div className={`${styles.contactCard} ${styles.whatsappCard} ${isVisible.contact ? styles.slideInLeft : ''}`}>

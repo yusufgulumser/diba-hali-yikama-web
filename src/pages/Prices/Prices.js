@@ -46,57 +46,33 @@ const Prices = () => {
       icon: '🏠',
       color: '#667eea',
       items: [
-        { name: 'Makina Halısı', price: 25, unit: 'm²', description: 'Standard makina dokuması halılar', popular: true },
-        { name: 'El Dokuması Halı', price: 45, unit: 'm²', description: 'El dokuması ve antika halılar' },
-        { name: 'Yün Halı', price: 35, unit: 'm²', description: 'Doğal yün elyaflı halılar' },
-        { name: 'Shaggy Halı', price: 30, unit: 'm²', description: 'Uzun tüylü modern halılar' },
-        { name: 'Kilim & Düz Dokuma', price: 20, unit: 'm²', description: 'İnce dokuma kilim ve yer minderleri' }
+        { name: 'Makina Halısı', price: 80, unit: 'm²', description: 'Standard makina dokuması halılar', popular: true },
+        { name: 'Akrilik Halı', price: 120, unit: 'm²', description: 'Akrilik halılar için özel temizlik' },
+        { name: 'Bambu Halı', price: 200, unit: 'm²', description: 'Doğal bambu halılar için özel işlem' },
+        { name: 'Saten Bambu/Polyester Bambu', price: 120, unit: 'm²', description: 'Saten bambu ve polyester bambu karışımı' },
+        { name: 'Shaggy Halı', price: 100, unit: 'm²', description: 'Uzun tüylü modern halılar' },
+        { name: 'El Dokuması Halı', price: 275, unit: 'm²', description: 'El dokuması ve antika halılar' },
+        { name: 'Kilim & Düz Dokuma', price: 60, unit: 'm²', description: 'İnce dokuma kilim ve yer minderleri' }
       ]
     },
     {
-      category: 'Koltuk & Mobilya',
+      category: 'Ev Eşyaları',
       icon: '🛋️',
       color: '#f093fb',
       items: [
-        { name: 'Tekli Koltuk', price: 150, unit: 'adet', description: 'Berjer ve tekli koltuklar', popular: true },
-        { name: 'İkili Koltuk', price: 250, unit: 'adet', description: 'İki kişilik koltuklar' },
-        { name: 'Üçlü Koltuk', price: 350, unit: 'adet', description: 'Üç kişilik koltuklar' },
-        { name: 'Köşe Takımı', price: 800, unit: 'takım', description: 'L şeklinde köşe takımları' },
-        { name: 'Yemek Sandalyesi', price: 35, unit: 'adet', description: 'Kumaş kaplı yemek sandalyeleri' }
-      ]
-    },
-    {
-      category: 'Yatak & Uyku Sistemleri',
-      icon: '🛏️',
-      color: '#4facfe',
-      items: [
-        { name: 'Tek Kişilik Yatak', price: 150, unit: 'adet', description: '90x190 tek kişilik yatak', popular: true },
-        { name: 'Çift Kişilik Yatak', price: 200, unit: 'adet', description: '160x200 çift kişilik yatak' },
-        { name: 'King Size Yatak', price: 250, unit: 'adet', description: '180x200 king size yatak' },
-        { name: 'Yastık Temizliği', price: 25, unit: 'adet', description: 'Tüm yastık çeşitleri' },
-        { name: 'Yorgan Temizliği', price: 75, unit: 'adet', description: 'Yorgan ve nevresim takımları' }
-      ]
-    },
-    {
-      category: 'Perde & Tekstil',
-      icon: '🪟',
-      color: '#10b981',
-      items: [
-        { name: 'Stor Perde', price: 15, unit: 'm²', description: 'Zebra ve rollo stor perdeler' },
-        { name: 'Klasik Perde', price: 20, unit: 'm²', description: 'Fon ve tül perdeler' },
-        { name: 'Blackout Perde', price: 25, unit: 'm²', description: 'Kalın karartma perdeleri' },
-        { name: 'Jaluzi Temizliği', price: 12, unit: 'm²', description: 'Ahşap ve PVC jaluziler' }
-      ]
-    },
-    {
-      category: 'Özel Hizmetler',
-      icon: '✨',
-      color: '#f59e0b',
-      items: [
-        { name: 'Leke Çıkarma', price: 50, unit: 'işlem', description: 'Özel leke çıkarma işlemi' },
-        { name: 'Koku Giderme', price: 40, unit: 'işlem', description: 'Koku giderme ve deodorize' },
-        { name: 'Antibakteriyel Uygulama', price: 30, unit: 'işlem', description: 'Hijyen ve dezenfeksiyon' },
-        { name: 'Express Teslimat', price: 100, unit: 'hizmet', description: '24 saat içinde teslimat' }
+        { name: 'Koltuk Takımı (3+2+1)', price: 2000, unit: 'takım', description: 'Tam koltuk takımı', popular: true },
+        { name: 'Tekli Koltuk', price: 600, unit: 'adet', description: 'Berjer ve tekli koltuklar' },
+        { name: 'İkili Koltuk', price: 1000, unit: 'adet', description: 'İki kişilik koltuklar' },
+        { name: 'Üçlü Koltuk', price: 1400, unit: 'adet', description: 'Üç kişilik koltuklar' },
+        { name: 'Köşe Takımı', price: 2500, unit: 'takım', description: 'L şeklinde köşe takımları' },
+        { name: 'Yemek Sandalyesi', price: 150, unit: 'adet', description: 'Kumaş kaplı yemek sandalyeleri' },
+        { name: 'Tek Kişilik Yatak', price: 1000, unit: 'adet', description: '90x190 tek kişilik yatak' },
+        { name: 'Çift Kişilik Yatak', price: 2000, unit: 'adet', description: '160x200 çift kişilik yatak', popular: true },
+        { name: 'King Size Yatak', price: 2500, unit: 'adet', description: '180x200 king size yatak' },
+        { name: 'Stor Perde', price: 180, unit: 'm²', description: 'Zebra ve rollo stor perdeler' },
+        { name: 'Battaniye', price: 300, unit: 'adet', description: 'Her türlü battaniye temizliği' },
+        { name: 'Yorgan Temizliği', price: 400, unit: 'adet', description: 'Yorgan ve nevresim takımları' },
+        { name: 'Yastık Temizliği', price: 100, unit: 'adet', description: 'Tüm yastık çeşitleri' }
       ]
     }
   ];

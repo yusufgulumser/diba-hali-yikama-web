@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
-import logo2 from '../../assets/logo2.jpeg';
+import logo2 from '../../assets/logo2.jpg';
 
 const Home = () => {
   const [visibleSections, setVisibleSections] = useState(new Set());

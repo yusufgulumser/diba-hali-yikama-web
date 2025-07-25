@@ -216,7 +216,7 @@ const Services = () => {
       title: "Halı Temizleme",
       description: "Profesyonel halı yıkama ve leke çıkarma hizmeti. Tüm halı türleri için uygun.",
       features: ["Derin temizlik", "Leke çıkarma", "Dezenfeksiyon", "Hızlı kurutma"],
-      price: "₺50'den başlayan fiyatlar",
+      price: "₺80'den başlayan fiyatlar",
       icon: <CarpetIcon />,
       gradient: "linear-gradient(135deg, #FF6B6B, #FFE66D)",
       category: "Ana Hizmet"
@@ -226,7 +226,7 @@ const Services = () => {
       title: "Koltuk Temizleme", 
       description: "Koltuk, kanepe ve oturma gruplarının profesyonel temizliği.",
       features: ["Kumaş koruma", "Leke temizleme", "Dezodorizasyon", "Antibakteriyel"],
-      price: "₺80'den başlayan fiyatlar",
+      price: "₺600'den başlayan fiyatlar",
       icon: <SofaIcon />,
       gradient: "linear-gradient(135deg, #4ECDC4, #44A08D)",
       category: "Popüler"
@@ -236,7 +236,7 @@ const Services = () => {
       title: "Perde Temizleme",
       description: "Tüm perde türleri için özel temizlik ve bakım hizmeti.",
       features: ["Hassas kumaş bakımı", "Buruşmazlık", "Renk koruma", "UV koruması"],
-      price: "₺30'dan başlayan fiyatlar",
+      price: "₺150'den başlayan fiyatlar",
       icon: <CurtainIcon />,
       gradient: "linear-gradient(135deg, #667eea, #764ba2)",
       category: "Özel"
@@ -246,7 +246,7 @@ const Services = () => {
       title: "Yatak Temizleme",
       description: "Yatak, şilte ve yatak aksesuarlarının hijyenik temizliği.",
       features: ["Akar temizleme", "Hijyen sağlama", "Koku giderme", "Sağlık koruması"],
-      price: "₺100'den başlayan fiyatlar",
+      price: "₺1000'den başlayan fiyatlar",
       icon: <MattressIcon />,
       gradient: "linear-gradient(135deg, #A8E6CF, #88D8A3)",
       category: "Sağlık"
@@ -256,7 +256,7 @@ const Services = () => {
       title: "Battaniye Temizleme",
       description: "Battaniye, örtü ve büyük tekstil ürünlerinin temizliği.",
       features: ["Yumuşaklık koruma", "Antibakteriyel", "Koku giderme", "Özel bakım"],
-      price: "₺40'tan başlayan fiyatlar",
+      price: "₺300'dan başlayan fiyatlar",
       icon: <BlanketIcon />,
       gradient: "linear-gradient(135deg, #FFECD2, #FCB69F)",
       category: "Ekonomik"
@@ -266,7 +266,7 @@ const Services = () => {
       title: "Yorgan Temizleme",
       description: "Yorgan, nevresim ve yatak tekstillerinin profesyonel bakımı.",
       features: ["Tüy bakımı", "Hacim koruma", "Hijyenik temizlik", "Allerjen temizleme"],
-      price: "₺60'tan başlayan fiyatlar",
+      price: "₺400'dan başlayan fiyatlar",
       icon: <DuvetIcon />,
       gradient: "linear-gradient(135deg, #FF9A9E, #FECFEF)",
       category: "Premium"
