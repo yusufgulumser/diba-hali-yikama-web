@@ -585,6 +585,36 @@
     padding: 2rem 0;
   }
   
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .heroRight {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  
+  .heroVisual {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .mainImage {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  .mainImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
   .titleMain {
     font-size: 2.5rem;
   }
@@ -640,6 +670,24 @@
 }
 
 @media (max-width: 480px) {
+  .modernHero {
+    min-height: 100vh;
+    padding: 1rem 0;
+  }
+  
+  .heroContent {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .heroVisual {
+    max-width: 250px;
+  }
+  
+  .mainImage {
+    max-height: 250px;
+  }
+  
   .titleMain {
     font-size: 2rem;
   }
