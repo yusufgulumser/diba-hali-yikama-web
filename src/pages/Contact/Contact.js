@@ -122,15 +122,15 @@ const Contact = () => {
               <WhatsAppSVG />
               <h3>WhatsApp İletişim</h3>
               <p>Hızlı ve kolay iletişim için WhatsApp üzerinden bize ulaşın.</p>
-              <p className={styles.phoneNumber}>📞 +90 533 456 78 90</p>
+              <p className={styles.phoneNumber}>📞 +90 530 183 96 56</p>
               <a 
-                href="https://wa.me/905334567890?text=Merhaba, halı yıkama hizmeti hakkında bilgi almak istiyorum." 
+                href="https://wa.me/905301839656?text=Merhaba, halı yıkama hizmeti hakkında bilgi almak istiyorum." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={styles.contactButton}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open('https://wa.me/905334567890?text=Merhaba, halı yıkama hizmeti hakkında bilgi almak istiyorum.', '_blank');
+                  window.open('https://wa.me/905301839656?text=Merhaba, halı yıkama hizmeti hakkında bilgi almak istiyorum.', '_blank');
                 }}
               >
                 💬 Mesaj Gönder
@@ -168,13 +168,13 @@ const Contact = () => {
               <PhoneSVG />
               <h3>Telefon İletişim</h3>
               <p>Direkt arama yaparak hızlıca randevu alın ve sorularınızı sorun.</p>
-              <p className={styles.phoneNumber}>📞 +90 533 456 78 90</p>
+              <p className={styles.phoneNumber}>📞 +90 530 183 96 56</p>
               <a 
-                href="tel:+905334567890" 
+                href="tel:+905301839656" 
                 className={styles.contactButton}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = 'tel:+905334567890';
+                  window.location.href = 'tel:+905301839656';
                 }}
               >
                 📞 Hemen Ara

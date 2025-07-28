@@ -184,7 +184,7 @@ const ServiceAreas = () => {
                 <span>Bölgeni Kontrol Et</span>
                 <i className="fas fa-map-marker-alt"></i>
               </Link>
-              <a href="tel:+905001234567" className={styles.secondaryAction}>
+              <a href="tel:+905301839656" className={styles.secondaryAction}>
                 <i className="fas fa-phone"></i>
                 <span>Hemen Ara</span>
               </a>
@@ -303,7 +303,7 @@ const ServiceAreas = () => {
                 <span>Özel Teklif Al</span>
                 <i className="fas fa-map-marked-alt"></i>
               </Link>
-              <a href="https://wa.me/905001234567" className={styles.ctaSecondary}>
+              <a href="https://wa.me/905301839656" className={styles.ctaSecondary}>
                 <i className="fab fa-whatsapp"></i>
                 <span>WhatsApp</span>
               </a>

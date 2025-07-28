@@ -354,7 +354,7 @@ const Prices = () => {
                 <span>Teklif Al</span>
                 <i className="fas fa-calculator"></i>
               </Link>
-              <a href="tel:+905001234567" className={styles.ctaSecondary}>
+              <a href="tel:+905301839656" className={styles.ctaSecondary}>
                 <i className="fas fa-phone"></i>
                 <span>Hemen Ara</span>
               </a>

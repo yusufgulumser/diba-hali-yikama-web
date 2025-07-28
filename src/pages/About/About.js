@@ -190,7 +190,7 @@ const About = () => {
                 <span>Hizmet Al</span>
                 <i className="fas fa-arrow-right"></i>
               </Link>
-              <a href="tel:+905001234567" className={styles.secondaryAction}>
+              <a href="tel:+905301839656" className={styles.secondaryAction}>
                 <i className="fas fa-phone"></i>
                 <span>Hemen Ara</span>
               </a>
