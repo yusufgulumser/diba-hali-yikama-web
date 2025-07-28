@@ -14,7 +14,7 @@ import video1 from '../../assets/video1.mp4';
 const Services = () => {
   const [isVisible, setIsVisible] = useState({});
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // eslint-disable-line no-unused-vars
   const [swiperInstance, setSwiperInstance] = useState(null);
   const videoRef = useRef(null);
 

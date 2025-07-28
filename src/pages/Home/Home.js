@@ -49,6 +49,10 @@ const Home = () => {
   });
 
   useEffect(() => {
+    const isHeroVisible = visibleSections.has('hero');
+    
+    if (!isHeroVisible) return;
+
     const targets = { experience: 15, customers: 50000, satisfaction: 99.8, coverage: 24 };
     const duration = 2000; // 2 seconds
     const steps = 50;
@@ -76,7 +80,7 @@ const Home = () => {
     }, stepTime);
 
     return () => clearInterval(timer);
-  }, [visibleSections.has('hero')]);
+  }, [visibleSections]);
 
 
 
